@@ -1,0 +1,20 @@
+{% extends "base.html"%}
+	{% block center %}
+	<article>
+		<div class="blog">
+			<header>
+				<div class="icon">
+					<i class="fa fa-file-text-o fa-2x"></i>
+				</div>
+				<div class="title">
+					<h1>{{ friends.title }}</h1>
+				</div>
+				<div class="summary">
+					{% autoescape off %}
+					{{ friends.content }}
+					{% endautoescape %}
+				</div>
+			</header>
+		</div>
+	</article>
+	{% endblock %}

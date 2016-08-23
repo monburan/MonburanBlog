@@ -1,0 +1,20 @@
+{% extends "base.html"%}
+	{% block center %}
+	<article>
+		<div class="blog">
+			<header>
+			<div class="icon">
+				<i class="fa fa-file-text-o fa-2x"></i>
+			</div>
+			<div class="title">
+				<h1>{{ aboutme.title }}</h1>
+			</div>
+			<header>
+			<div class="summary">
+				{% autoescape off %}
+				{{ aboutme.content }}
+				{% endautoescape %}
+			</div>
+		</div>
+	</article>
+	{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+	{% block center %}
+	<article>
+		<div class="blog">
+			<header>
+			<div class="icon">
+				<i class="fa fa-thumb-tack fa-2x"></i>
+			</div>
+			<div class="title">
+				<h2>{{ blog.title }}</h2>
+			</div>
+			<div class="info">
+				<span class="category" ><i class="fa fa-folder fa-1g"></i> {{ blog.category.name }} </span>
+				<span class="tag" ><i class="fa fa-tag fa-1g"></i> {{blog.tag.name}} </span>
+				<span class="author" ><i class="fa fa-user fa-1g"></i> {{ blog.author }} </span>
+				<span class="created" ><i class="fa fa-upload fa-1g"></i> {{ blog.created|date:"Y-m-d H:i" }} </span>
+			</div>
+			</header>
+			<div class="summary">
+				{% autoescape off %}
+				{{ blog.content }}
+				{% endautoescape %}
+			</div>
+		</div>
+		<div class="comment">
+			{% include "duoshuo.html"%}
+		</div>
+	</article>
+	{% endblock %}

@@ -1,0 +1,144 @@
+*{
+margin:0;
+font-style:100%;
+padding:0;
+font-family: Arial,Helvetica,"Microsoft Yahei",Monaco,Menlo,Consolas,"Courier New",monospace;;
+}
+h1, h2, h3, h4, h5 ,h6 .h1 .h2 .h3 .h4 .h5 .h6{
+font-weight:normal;
+line-height: 1.1;
+color: inherit;
+}
+fullscreen,body,html {
+height:100%;1111
+}
+a {
+text-decoration: none;
+color: #0D0D0D;
+}
+article {
+margin: 1.5pc auto;
+position: relative;
+width: 95%;
+box-shadow: 3px 4px 5px #ddd;
+}
+.blog_title .cover {
+height:150px;
+width:150px;
+border:5px;
+border-style:solid;
+border-color:rgba(0,153,0,0.7);
+border-radius:50%;
+}
+fullscreen {
+min-height: 100%;
+position: relative;
+}
+.fullscreen li{
+list-style-type:none;
+}
+.fullscreen .header {
+position: fixed;
+width: 300px;
+height: 100%;
+}
+.fullscreen .header .header_less{
+margin:1.5pc auto 1.5pc ;
+text-align:center;
+width:80%;
+height:100%
+}
+.fullscreen .header_less .blog_title .blog_user {
+font-size: 38px;
+margin: 1pc auto;
+}
+.fullscreen .header_less .blog_title .blog_summary{
+font-size: 13px;
+line-height:25px;
+color:#999;
+}
+.fullscreen .blog_list{
+text-align:center;
+}
+.fullscreen .switch_list{
+margin: 10% auto;
+width: 10em;
+padding: 7px;
+}
+.fullscreen .switch_list li{
+margin: 5% auto;
+}
+.fullscreen .header .header_less .follow{
+margin:10% auto;
+}
+.fullscreen .center {
+position: absolute;
+right: 0;
+min-height: 100%;
+left: 300px;
+width: auto;
+}
+article .blog{
+padding: 20px 20px 20px 70px;
+}
+article header .icon::before {
+left: 0;
+position: absolute;
+text-align: center;
+top: 0;
+width: 30px;
+}
+article header .icon {
+height: 32px;
+left: 20px;
+position: absolute;
+top: 20px;
+width: 30px;
+}
+article .summary {
+margin-top:15px;
+line-height: 1.6;
+text-align: justify;
+}
+article footer ,article header .info{
+color: rgba(0, 153, 0, 0.7);
+font-size: 0.9em;
+line-height: 16px;
+padding-top: 10px;
+position: relative;
+}
+article footer {
+border-top: 1px solid #ddd;
+margin-top: 15px;
+}
+article header .info{
+margin-bottom: 15px;
+}
+article header .info .category ,article header .info .tag,article header .info .author,article header .info .created {
+padding-left: 20px;
+}
+article footer .category,article footer .tag,article footer .author,article footer .created{
+padding-left: 20px;
+}
+.fullscreen .header .header_less footer {
+text-align: center;
+margin: 30px auto;
+font-size: 9pt;
+font-family: Menlo,Monaco,Andale Mono,lucida console,Courier New,monospace;
+text-shadow: 0 1px #fff;
+color: #999;
+position: relative;
+}
+.fullscreen .center .page {
+position:relative;
+text-align: center;
+padding-bottom:1.5pc;
+
+}
+.fullscreen .center .page a{
+padding-right:5px;
+}
+
+.fullscreen .footer a{
+color: #999;
+}

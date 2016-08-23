@@ -1,0 +1,10 @@
+{% extends "base.html"%}
+	{% block center %}
+		<div class='categorys'>
+			<ul>
+			{% for category in categorys %}
+				<li><a>{{ category.name }}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+	{% endblock %}
