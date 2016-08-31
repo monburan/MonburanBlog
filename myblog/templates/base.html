@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Blog is building</title>
+	{% block title %}
+	{% endblock %}
 	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href='{% static 'css/style.css' %}'>
-	<link rel="stylesheet" type="text/css" href='{% static 'css/font-awesome.css' %}'>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
 </head>
 <body>
 <div class="fullscreen">
 	<div class="header">
 		<div class="header_less">
 			<div class="blog_title">
-				<img class="cover" src='http://o8lgx56x1.bkt.clouddn.com/cover.jpg'></img>
+				<a href="/"><img class="cover" src='http://o8lgx56x1.bkt.clouddn.com/cover.jpg'></img></a>
 				<h1 class="blog_user"><a href="/">Monburan</a></h1>
 				<h5 class="blog_summary">--好奇、爱折腾、穷折腾</h5>
 			</div>

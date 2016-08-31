@@ -1,4 +1,13 @@
 {% extends "base.html"%}
+	{% block title %}
+		{% if title_type == "index" %}
+			<title>Monburan</title>
+		{% elif title_type == "category"%}
+			<title>Monburan -- {{ title_name.name }}</title>
+		{% elif title_type == "tag" %}
+			<title>Monburan -- {{ title_name.name }}</title>
+		{% endif %}
+	{% endblock%}
 	{% block center %}
 		{% for blog in blogs.object_list %}
 		<article>
@@ -20,12 +29,21 @@
 				</div>
 				<footer>
 					<span class="category" >
-						<i class="fa fa-folder fa-1g"></i>
-						<a >{{ blog.category.name }}</a>
+						<i class="fa fa-folder fa-1g"></i> 
+						<a href="{% url 'blog_get_category' blog.category_id %}">{{ blog.category.name }}</a> 
 					</span>
 					<span class="tag" >
+					{% if blog.tag.all.count == 1 %}
 						<i class="fa fa-tag fa-1g"></i>
-						<a>{{blog.tag.name}}</a>
+						{% for tag in blog.tag.all	%}
+						<a href="{% url 'blog_get_tag' tag.id %}">{{ tag }}</a>
+						{% endfor %}
+					{% elif blog.tag.all.count > 1 %}
+						<i class="fa fa-tags fa-1g"></i>
+						{% for tag in blog.tag.all	%}
+							<a href="{% url 'blog_get_tag' tag.id %}">{{ tag }}</a>
+						{% endfor %}
+					{% endif %}
 					</span>
 					<span class="author" >
 						<i class="fa fa-user fa-1g"></i>
@@ -33,7 +51,7 @@
 					</span>
 					<span class="created" >
 						<i class="fa fa-upload fa-1g"></i>
-						{{ blog.created|date:"Y-m-d H:i" }}
+						<a>{{ blog.created|date:"Y-m-d H:i" }}</a>
 					</span>
 				</footer>
 			</div>
@@ -41,17 +59,25 @@
 		{% endfor %}
 			<footer class="page">
 					{% if blogs.has_previous %}
-  						<span><a href="?page={{ blogs.previous_page_number }}">上一页</a><span>
-  					{% endif %}
+  						<span>
+						<a href="?page={{ blogs.previous_page_number }}">上一页</a>
+						</span>
+					{% endif %}
 					{% for page_number in blogs.paginator.page_range %}
 						{% ifequal page_numeber blogs.number %}
 							{{ page_number }}
 						{% else %}
-						<span><a href="?page={{ page_number }}">{{ page_number }}</a></span>
+							{%if blogs.number > limit %}
+							<span>
+								<a href="?page={{ page_number }}">{{ page_number }}</a>
+							</span>
+							{% endif %}
 						{% endifequal %}
 					{% endfor %}
 					{% if blogs.has_next %}
- 						<span><a href="?page={{ blogs.next_page_number }}">下一页</a></span>
+ 						<span>
+						<a href="?page={{ blogs.next_page_number }}">下一页</a>
+						</span>
 					{% endif %}
 			</footer>
 	{% endblock %}

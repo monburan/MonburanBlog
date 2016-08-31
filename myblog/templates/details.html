@@ -1,4 +1,11 @@
 {% extends "base.html"%}
+	{% block title %}
+	{% load staticfiles %}
+		<title>Monburan -- {{ blog.title }}</title>
+		<link rel="stylesheet" href="{% static 'highlight/styles/solarized-dark.css' %}">
+		<script src="{% static 'highlight/highlight.pack.js' %}"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	{% endblock%}
 	{% block center %}
 	<article>
 		<div class="blog">
@@ -10,10 +17,24 @@
 				<h2>{{ blog.title }}</h2>
 			</div>
 			<div class="info">
-				<span class="category" ><i class="fa fa-folder fa-1g"></i> {{ blog.category.name }} </span>
-				<span class="tag" ><i class="fa fa-tag fa-1g"></i> {{blog.tag.name}} </span>
-				<span class="author" ><i class="fa fa-user fa-1g"></i> {{ blog.author }} </span>
-				<span class="created" ><i class="fa fa-upload fa-1g"></i> {{ blog.created|date:"Y-m-d H:i" }} </span>
+				<span class="category" ><i class="fa fa-folder fa-1g"></i>
+				<a href="{% url 'blog_get_category' blog.category_id %}"> {{ blog.category.name }} </a>
+				</span>
+				<span class="tag" >
+					{% if blog.tag.all.count == 1 %}
+						<i class="fa fa-tag fa-1g"></i>
+						{% for tag in blog.tag.all	%}
+						<a href="{% url 'blog_get_tag' tag.id %}">{{ tag }}</a>
+						{% endfor %}
+					{% elif blog.tag.all.count > 1 %}
+						<i class="fa fa-tags fa-1g"></i>
+						{% for tag in blog.tag.all	%}
+							<a>{{ tag }}</a>
+						{% endfor %}
+					{% endif %}
+				</span>
+				<span class="author" ><i class="fa fa-user fa-1g"></i><a> {{ blog.author }}</a> </span>
+				<span class="created" ><i class="fa fa-upload fa-1g"></i><a>{{ blog.created|date:"Y-m-d H:i" }}</a> </span>
 			</div>
 			</header>
 			<div class="summary">

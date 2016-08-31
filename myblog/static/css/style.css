@@ -79,7 +79,7 @@ left: 300px;
 width: auto;
 }
 article .blog{
-padding: 20px 20px 20px 70px;
+padding: 20px 20px 15px 77px;
 }
 article header .icon::before {
 left: 0;
@@ -95,13 +95,28 @@ position: absolute;
 top: 20px;
 width: 30px;
 }
+.fullscreen .center article .comment{
+margin-left:5%;
+margin-right:5%;
+}
+article header .title a{
+text-shadow: 2px 2px 3px rgba(50, 50, 50, 0.3);
+font-size: 110%
+}
+article .blog header .title{
+text-shadow: 2px 2px 3px rgba(50, 50, 50, 0.3);
+font-size: 120%;
+}
 article .summary {
 margin-top:15px;
 line-height: 1.6;
 text-align: justify;
+width: 95%;
+}
+article .blog .summary{
+width: 95%;
 }
 article footer ,article header .info{
-color: rgba(0, 153, 0, 0.7);
 font-size: 0.9em;
 line-height: 16px;
 padding-top: 10px;
@@ -117,8 +132,14 @@ margin-bottom: 15px;
 article header .info .category ,article header .info .tag,article header .info .author,article header .info .created {
 padding-left: 20px;
 }
+article header .info .category a,article header .info .tag a,article header .info .author a,article header .info .created a{
+color:#859900;
+}
 article footer .category,article footer .tag,article footer .author,article footer .created{
 padding-left: 20px;
+}
+article footer .category a,article footer .tag a,article footer .author a,article footer .created a{
+color:#859900;
 }
 .fullscreen .header .header_less footer {
 text-align: center;
@@ -130,15 +151,9 @@ color: #999;
 position: relative;
 }
 .fullscreen .center .page {
-position:relative;
 text-align: center;
-padding-bottom:1.5pc;
-
+padding-bottom: 1.5pc;
 }
-.fullscreen .center .page a{
-padding-right:5px;
-}
-
 .fullscreen .footer a{
 color: #999;
 }

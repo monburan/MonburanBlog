@@ -43,6 +43,54 @@ INSTALLED_APPS = (
     'blog',
 )
 
+CKEDITOR_UPLOAD_PATH='uploads/'
+CKEDITOR_IMAGE_BACKEND='pillow'
+CKEDITOR_CONFIGS = {
+	'default':{
+		'skin':'moono',
+		'height':500,
+		'widget':900,
+		'toolbar':[
+			['div','Source','-','Save','NewPage','Preview','-','Templates'], 
+			['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'], 
+			['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'], 
+			['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'], 
+			['Bold','Italic','Underline','Strike','-','Subscript','Superscript'], 
+			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'], 
+			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'], 
+			['Link','Unlink','Anchor'], 
+			['CodeSnippet','CodeMirror','Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'], 
+			['Styles','Format','Font','FontSize','TextColor','BGColor'], 
+			['Maximize','ShowBlocks','-','About', 'pbckcode'],
+			],
+		'extraPlugins':'sourcedialog,codemirror,widget,lineutils,codesnippet,selectall',
+		'codemirror' : {
+            'theme': 'default',
+            'lineNumbers': True,
+            'lineWrapping': True,
+            'matchBrackets': True,
+            'autoCloseTags': True,
+            'autoCloseBrackets': True,
+            'enableSearchTools': True,
+            'enableCodeFolding': True,
+            'enableCodeFormatting': True,
+            'autoFormatOnStart': False,
+            'autoFormatOnModeChange': False,
+            'autoFormatOnUncomment': False,
+            'highlightActiveLine': True,
+            'mode': 'htmlmixed',
+            'showSearchButton': True,
+            'showTrailingSpace': True,
+            'highlightMatches': True,
+            'showFormatButton': True,
+            'showCommentButton': True,
+            'showUncommentButton': True,
+            'showAutoCompleteButton': True,
+        },
+		'allowedContent' : True,
+	},
+}
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,7 +129,7 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+		'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
@@ -99,9 +147,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-CKEDITOR_UPLOAD_PATH='uploads/'
-CKEDITOR_IMAGE_BACKEND='pillow'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
