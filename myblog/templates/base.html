@@ -2,55 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	{% block title %}
-	{% endblock %}
-	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
+    {% block title %}
+    {% endblock %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
 </head>
 <body>
 <div class="fullscreen">
-	<div class="header">
-		<div class="header_less">
-			<div class="blog_title">
-				<a href="/"><img class="cover" src='http://o8lgx56x1.bkt.clouddn.com/cover.jpg'></img></a>
-				<h1 class="blog_user"><a href="/">Monburan</a></h1>
-				<h5 class="blog_summary">--好奇、爱折腾、穷折腾</h5>
-			</div>
-			<div class="blog_list">
-				<ul class="switch_list">
-					<li>
-						<a href='/categorys.html'>分类</a>
-					</li>
-					<li>
-						<a href='/tags.html'>标签</a>
-					</li>
-					<li>
-						<a href='/aboutme.html'>关于</a>
-					</li>
-					<li>
-						<a href='/friends.html'>好友</a>
-					</li>
-				</ul>
-			</div>
-			<div class='follow'>
-				<i class="fa fa-weibo fa-2x"></i>
-				<a href="http://weibo.com/u/2652462994">weibo</a>
-				<i class="fa fa-github fa-2x"></i>
-				<a href="https://github.com/monburan">github</a>
-			</div>
-			<footer>
-				<div class="footer">
-					<p>Copyright © Monburan</p>
-					<p><a href="http://www.miitbeian.gov.cn">吉ICP备16003668号</a></p>
-				</div>
-			</footer>
-		</div>
-	</div>
-	<div class="center">
-		{% block center %}
-		{% endblock %}
-	</div>
+    <div class="header">
+        <div class="header_less">
+            <div class="blog_title">
+                <a href="/"><img class="cover" src='http://o8lgx56x1.bkt.clouddn.com/cover.jpg'></img></a>
+                <h1 class="blog_user"><a href="/">Monburan</a></h1>
+                <h5 class="blog_summary">--好奇、爱折腾、穷折腾</h5>
+            </div>
+            <div class="blog_list">
+                <ul class="switch_list">
+                    <li>
+                        <a href='/categorys.html'>分类</a>
+                    </li>
+                    <li>
+                        <a href='/tags.html'>标签</a>
+                    </li>
+                    <li>
+                        <a href='/aboutme.html'>关于</a>
+                    </li>
+                    <li>
+                        <a href='/friends.html'>好友</a>
+                    </li>
+                </ul>
+            </div>
+            <div class='follow'>
+                <i class="fa fa-weibo fa-2x"></i>
+                <a href="http://weibo.com/u/2652462994">weibo</a>
+                <i class="fa fa-github fa-2x"></i>
+                <a href="https://github.com/monburan">github</a>
+            </div>
+            <footer>
+                <div class="footer">
+                    <p>Copyright © Monburan</p>
+                    <p><a href="http://www.miitbeian.gov.cn">吉ICP备16003668号</a></p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div class="center">
+        {% block center %}
+        {% endblock %}
+    </div>
 </div>
 </body>
 </html>

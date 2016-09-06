@@ -1,44 +1,44 @@
 {% extends "base.html"%}
-	{% block title %}
-		{% load staticfiles %}
-		<title>Monburan -- 标签</title>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/jqcloud.css' %}"/>
-		<script type="text/javascript" src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'js/jqcloud-1.0.4.js' %}"></script>
-		<script type="text/javascript">
-		function escape2Html(str) {
-			var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
-			return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
-		}
-		function word(text,weight,link){
-			this.text = escape2Html(text);
-			this.weight = weight;
-			this.link=link;
-		}
-		function getdatas(){
-			var word_cloud=new Array();
-			var j=1
-			{% for tag in tags %}
-				word_cloud.push(
-				new word('{{ tag.name }}',
-				{{tag.blog_set.all.count}},
-				"{% url 'blog_get_tag' tag.id %}"));
-				console.log(word_cloud)
-			{% endfor %}
-			return word_cloud
-		}
-		function getheight(){
-			var height = document.body.clientHeight;
-			return height
-		}
-		$(function(){
-			var word_cloud = getdatas();
-			$("#tags").jQCloud(word_cloud,{height:getheight()});
-		});
-		
-		</script>
-	{% endblock %}
-	{% block center %}
-		<div id='tags'>
-		</div>
-	{% endblock %}
+    {% block title %}
+        {% load staticfiles %}
+        <title>Monburan -- 标签</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jqcloud.css' %}"/>
+        <script type="text/javascript" src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jqcloud-1.0.4.js' %}"></script>
+        <script type="text/javascript">
+        function escape2Html(str) {
+            var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+            return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+        }
+        function word(text,weight,link){
+            this.text = escape2Html(text);
+            this.weight = weight;
+            this.link=link;
+        }
+        function getdatas(){
+            var word_cloud=new Array();
+            var j=1
+            {% for tag in tags %}
+                word_cloud.push(
+                new word('{{ tag.name }}',
+                {{tag.blog_set.all.count}},
+                "{% url 'blog_get_tag' tag.id %}"));
+                console.log(word_cloud)
+            {% endfor %}
+            return word_cloud
+        }
+        function getheight(){
+            var height = document.body.clientHeight;
+            return height
+        }
+        $(function(){
+            var word_cloud = getdatas();
+            $("#tags").jQCloud(word_cloud,{height:getheight()});
+        });
+        
+        </script>
+    {% endblock %}
+    {% block center %}
+        <div id='tags'>
+        </div>
+    {% endblock %}

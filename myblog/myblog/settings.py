@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-	'django_admin_bootstrapped',
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,25 +46,25 @@ INSTALLED_APPS = (
 CKEDITOR_UPLOAD_PATH='uploads/'
 CKEDITOR_IMAGE_BACKEND='pillow'
 CKEDITOR_CONFIGS = {
-	'default':{
-		'skin':'moono',
-		'height':500,
-		'widget':900,
-		'toolbar':[
-			['div','Source','-','Save','NewPage','Preview','-','Templates'], 
-			['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'], 
-			['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'], 
-			['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'], 
-			['Bold','Italic','Underline','Strike','-','Subscript','Superscript'], 
-			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'], 
-			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'], 
-			['Link','Unlink','Anchor'], 
-			['CodeSnippet','CodeMirror','Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'], 
-			['Styles','Format','Font','FontSize','TextColor','BGColor'], 
-			['Maximize','ShowBlocks','-','About', 'pbckcode'],
-			],
-		'extraPlugins':'sourcedialog,codemirror,widget,lineutils,codesnippet,selectall',
-		'codemirror' : {
+    'default':{
+        'skin':'moono',
+        'height':500,
+        'widget':900,
+        'toolbar':[
+            ['div','Source','-','Save','NewPage','Preview','-','Templates'], 
+            ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'], 
+            ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'], 
+            ['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'], 
+            ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'], 
+            ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'], 
+            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'], 
+            ['Link','Unlink','Anchor'], 
+            ['CodeSnippet','CodeMirror','Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'], 
+            ['Styles','Format','Font','FontSize','TextColor','BGColor'], 
+            ['Maximize','ShowBlocks','-','About', 'pbckcode'],
+            ],
+        'extraPlugins':'sourcedialog,codemirror,widget,lineutils,codesnippet,selectall',
+        'codemirror' : {
             'theme': 'default',
             'lineNumbers': True,
             'lineWrapping': True,
@@ -87,8 +87,8 @@ CKEDITOR_CONFIGS = {
             'showUncommentButton': True,
             'showAutoCompleteButton': True,
         },
-		'allowedContent' : True,
-	},
+        'allowedContent' : True,
+    },
 }
 
 MIDDLEWARE_CLASSES = (
@@ -107,7 +107,7 @@ ROOT_URLCONF = 'myblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/'],
+        'DIRS': [os.path.join(BASE_DIR,'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,7 +115,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-				'django.template.context_processors.static',
+                'django.template.context_processors.static',
             ],
         },
     },
@@ -129,8 +129,13 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+		'ENGINE':'django.db.backends.mysql',
+		'OPTIONS':{
+			'read_default_file':'/etc/my.cnf',
+			#'init_commend':'SET storage_engine=INNODB',
+		},
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -151,7 +156,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'ck_media')
-STATIC_ROOT = os.path.join(BASE_DIR,'ck_static')
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 STATIC_URL = '/static/'
-STATICFILES_DIRS=(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+#STATICFILES_DIRS = (
+	#os.path.join(BASE_DIR,'static'),
+	#'/var/www/html/myblog/commonstatic',
+#	)

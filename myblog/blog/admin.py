@@ -11,10 +11,10 @@ class AdminTagShow(admin.ModelAdmin):
     list_display = ('name',)
     
 class AdminAboutMe(admin.ModelAdmin):
-	list_display = ('title','content')
+    list_display = ('title','content')
 
 class AdminFriends(admin.ModelAdmin):
-	list_dispaly = ('title','content')
+    list_dispaly = ('title','content')
 
 admin.site.register(models.Blog,AdminBlogShow)
 admin.site.register(models.Category,AdminCategoryShow)

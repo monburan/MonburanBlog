@@ -1,106 +1,77 @@
 {% extends "base.html"%}
-	{% block title %}
-		{% if title_type == "index" %}
-			<title>Monburan</title>
-		{% elif title_type == "category"%}
-			<title>Monburan -- {{ title_name.name }}</title>
-		{% elif title_type == "tag" %}
-			<title>Monburan -- {{ title_name.name }}</title>
-		{% endif %}
-	{% endblock%}
-	{% block center %}
-		{% for blog in blogs.object_list %}
-		<article>
-			<div class="blog">
-				<header>
-					<div class="icon">
-						<i class="fa fa-file-text-o fa-2x"></i>
-					</div>
-					<div class="title">
-						<a href="{% url 'blog_get_detail' blog.id %}"><h1>{{ blog.title }}</h1></a>
-					</div>
-			</header>
-				<div class="summary">
-					<p>
-					{% autoescape off %}
-					{{ blog.content|slice:'100' }}
-					{% endautoescape %}
-					</p>
-				</div>
-				<footer>
-<<<<<<< HEAD
-					<span class="category" >
-						<i class="fa fa-folder fa-1g"></i> 
-						<a href="{% url 'blog_get_category' blog.category_id %}">{{ blog.category.name }}</a> 
-					</span>
-					<span class="tag" >
-					{% if blog.tag.all.count == 1 %}
-						<i class="fa fa-tag fa-1g"></i>
-						{% for tag in blog.tag.all	%}
-						<a href="{% url 'blog_get_tag' tag.id %}">{{ tag }}</a>
-						{% endfor %}
-					{% elif blog.tag.all.count > 1 %}
-						<i class="fa fa-tags fa-1g"></i>
-						{% for tag in blog.tag.all	%}
-							<a href="{% url 'blog_get_tag' tag.id %}">{{ tag }}</a>
-						{% endfor %}
-					{% endif %}
-					</span>
-					<span class="author" >
-						<i class="fa fa-user fa-1g"></i>
-						<a>{{ blog.author }}</a>
-					</span>
-					<span class="created" >
-						<i class="fa fa-upload fa-1g"></i>
-						<a>{{ blog.created|date:"Y-m-d H:i" }}</a>
-					</span>
-=======
-					<span class="category" ><i class="fa fa-folder fa-1g"></i> {{ blog.category.name }} </span>
-					<span class="tag" ><i class="fa fa-tag fa-1g"></i> {{blog.tag.name}} </span>
-					<span class="author" ><i class="fa fa-user fa-1g"></i> {{ blog.author }} </span>
-					<span class="created" ><i class="fa fa-upload fa-1g"></i> {{ blog.created|date:"Y-m-d H:i" }} </span>
->>>>>>> edbb62cad184dd93a2cab2fa805253f028441a60
-				</footer>
-			</div>
-		</article>
-		{% endfor %}
-			<div class="page">
-				<p>
-					{% if blogs.has_previous %}
-<<<<<<< HEAD
-  						<span>
-						<a href="?page={{ blogs.previous_page_number }}">上一页</a>
-						</span>
-					{% endif %}
-=======
-  						<a href="?page={{ blogs.previous_page_number }}">上一页</a>
-  					{% endif %}
->>>>>>> edbb62cad184dd93a2cab2fa805253f028441a60
-					{% for page_number in blogs.paginator.page_range %}
-						{% ifequal page_numeber blogs.number %}
-							{{ page_number }}
-						{% else %}
-<<<<<<< HEAD
-							{%if blogs.number > limit %}
-							<span>
-								<a href="?page={{ page_number }}">{{ page_number }}</a>
-							</span>
-							{% endif %}
-						{% endifequal %}
-					{% endfor %}
-					{% if blogs.has_next %}
- 						<span>
-						<a href="?page={{ blogs.next_page_number }}">下一页</a>
-						</span>
-=======
-							<a href="?page={{ page_number }}">{{ page_number }}</a>
-						{% endifequal %}
-					{% endfor %}
-					{% if blogs.has_next %}
- 						<a href="?page={{ blogs.next_page_number }}">下一页</a>
->>>>>>> edbb62cad184dd93a2cab2fa805253f028441a60
-					{% endif %}
-
-				</p>
-			</div>
-	{% endblock %}
+    {% block title %}
+        {% if title_type == "index" %}
+            <title>Monburan</title>
+        {% elif title_type == "category"%}
+            <title>Monburan -- {{ title_name.name }}</title>
+        {% elif title_type == "tag" %}
+            <title>Monburan -- {{ title_name.name }}</title>
+        {% endif %}
+    {% endblock%}
+    {% block center %}
+        {% for blog in blogs.object_list %}
+        <article>
+            <div class="blog">
+                <header>
+                    <div class="icon">
+                        <i class="fa fa-file-text-o fa-2x"></i>
+                    </div>
+                    <div class="title">
+                        <a href="{% url 'blog_get_detail' blog.id %}"><h1>{{ blog.title }}</h1></a>
+                    </div>
+            </header>
+                <div class="summary">
+                    <p>
+                    {% autoescape off %}
+                    {{ blog.content|slice:'100' }}
+                    {% endautoescape %}
+                    </p>
+                </div>
+                <footer>
+                    <span class="category" >
+                        <i class="fa fa-folder fa-1g"></i> 
+                        <a href="{% url 'blog_get_category' blog.category_id %}">{{ blog.category.name }}</a> 
+                    </span>
+                    <span class="tag" >
+                    {% if blog.tag.all.count == 1 %}
+                        <i class="fa fa-tag fa-1g"></i>
+                        {% for tag in blog.tag.all    %}
+                        <a href="{% url 'blog_get_tag' tag.id %}">{{ tag }}</a>
+                        {% endfor %}
+                    {% elif blog.tag.all.count > 1 %}
+                        <i class="fa fa-tags fa-1g"></i>
+                        {% for tag in blog.tag.all    %}
+                            <a href="{% url 'blog_get_tag' tag.id %}">{{ tag }}</a>
+                        {% endfor %}
+                    {% endif %}
+                    </span>
+                    <span class="author" >
+                        <i class="fa fa-user fa-1g"></i>
+                        <a>{{ blog.author }}</a>
+                    </span>
+                    <span class="created" >
+                        <i class="fa fa-upload fa-1g"></i>
+                        <a>{{ blog.created|date:"Y-m-d H:i" }}</a>
+                    </span>
+                </footer>
+            </div>
+        </article>
+        {% endfor %}
+            <footer class="page">
+                    {% if blogs.has_previous %}
+                          <span>
+                        <a href="?page={{ blogs.previous_page_number }}">上一页</a>
+                        </span>
+                    {% endif %}
+                    {% for page_number in blogs.paginator.page_range %}
+                    	<span>
+                	        <a href="?page={{ page_number }}">{{ page_number }}</a>
+                        </span>
+                    {% endfor %}
+                    {% if blogs.has_next %}
+                         <span>
+                        <a href="?page={{ blogs.next_page_number }}">下一页</a>
+                        </span>
+                    {% endif %}
+            </footer>
+    {% endblock %}

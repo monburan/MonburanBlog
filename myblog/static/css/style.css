@@ -10,13 +10,14 @@ line-height: 1.1;
 color: inherit;
 }
 fullscreen,body,html {
-height:100%;1111
+height:100%;
 }
 a {
 text-decoration: none;
 color: #0D0D0D;
 }
 article {
+background:white;
 margin: 1.5pc auto;
 position: relative;
 width: 95%;
@@ -27,7 +28,7 @@ height:150px;
 width:150px;
 border:5px;
 border-style:solid;
-border-color:rgba(0,153,0,0.7);
+border-color:#859900;
 border-radius:50%;
 }
 fullscreen {
@@ -41,16 +42,21 @@ list-style-type:none;
 position: fixed;
 width: 300px;
 height: 100%;
+background:black;
 }
 .fullscreen .header .header_less{
 margin:1.5pc auto 1.5pc ;
 text-align:center;
 width:80%;
-height:100%
+height:100%;
+color:#859900;
 }
 .fullscreen .header_less .blog_title .blog_user {
 font-size: 38px;
 margin: 1pc auto;
+}
+.fullscreen .header_less a ,.blog_title a,.blog_user a{
+color:rgb(217,217,214);
 }
 .fullscreen .header_less .blog_title .blog_summary{
 font-size: 13px;
@@ -77,6 +83,7 @@ right: 0;
 min-height: 100%;
 left: 300px;
 width: auto;
+background:#f4f6f8;
 }
 article .blog{
 padding: 20px 20px 15px 77px;
@@ -130,23 +137,22 @@ article header .info{
 margin-bottom: 15px;
 }
 article header .info .category ,article header .info .tag,article header .info .author,article header .info .created {
-padding-left: 20px;
+padding-left: 10px;
 }
 article header .info .category a,article header .info .tag a,article header .info .author a,article header .info .created a{
-color:#859900;
+color:#999;
 }
 article footer .category,article footer .tag,article footer .author,article footer .created{
-padding-left: 20px;
+padding-left: 10px;
 }
 article footer .category a,article footer .tag a,article footer .author a,article footer .created a{
-color:#859900;
+color:#999;
 }
 .fullscreen .header .header_less footer {
 text-align: center;
 margin: 30px auto;
 font-size: 9pt;
 font-family: Menlo,Monaco,Andale Mono,lucida console,Courier New,monospace;
-text-shadow: 0 1px #fff;
 color: #999;
 position: relative;
 }
@@ -156,4 +162,7 @@ padding-bottom: 1.5pc;
 }
 .fullscreen .footer a{
 color: #999;
+}
+article header .info .category i, article header .info .tag i, article header .info .author i, article header .info .created i{
+padding-right:5px;
 }
