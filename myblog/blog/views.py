@@ -95,9 +95,10 @@ def get_tag_id(request,t_id):
 
 def about_me(request):
 	try:    
-   		data = Aboutme.objects.get(id=1)
+		data = Aboutme.objects.get(id=1)
 	except Aboutme.DoesNotExist:
 		raise Http404
+#		return rander_to_response('error404.html')
 	else:
 		return render_to_response('aboutme.html',{'aboutme':data})
 
@@ -106,6 +107,12 @@ def friends(request):
 		data = Friends.objects.get(id=1)
 	except Friends.DoesNotExist:
 		raise Http404
+#		return rander_to_response('error404.html')
 	else:
 		return render_to_response('friends.html',{'friends':data})
+
+#def error(request,error):
+#	if error == 404:
+#		return rander_to_response('error404.html')
+
 # Create your views here.
