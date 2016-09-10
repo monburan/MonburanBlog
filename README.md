@@ -7,7 +7,7 @@ MonburanBlog
 于是乎自己用django写一个blog的想法就冒出来了。<br />
 中间把大二学过的js和css捡了捡。<br />
 断断续续写了半个多月，后边又有点事情停了几天没动。<br />
-其实中间改的最多的不是bug，而是界面_(:з」∠)_<br />
+其实中间改的最多的不是bug，而是界面__(:з」∠)__<br />
 总之拖了将近一个月才把东西架到服务器上。<br />
 
 ##功能
@@ -15,14 +15,14 @@ MonburanBlog
 富文本编辑，代码高亮，文章发布，标签分类，多说评论，后台管理
 
 ##说明
-基于django框架<br />
+基于<b>django</b>框架<br />
 
-后台采用django-admin-bootstrap美化<br />
-后台编辑器采用ckeditor符文本编辑器<br />
+后台采用<b>django-admin-bootstrap</b>美化<br />
+后台编辑器采用<b>ckeditor</b>符文本编辑器<br />
 评论系统采用多说<br />
-代码高亮采用highlight，配色采用solarized-dark<br/>
-标签云采用jqcloud<br />
-图标采用Font Awesome<br />
-使用uwsgi+nginx部署<br />
+代码高亮采用<b>highlight</b>，配色采用<b>solarized-dark</b><br/>
+标签云采用<b>jqcloud</b><br />
+图标采用<b>Font Awesome</b><br />
+使用uwsgi+nginx+mysql部署<br />
 
 ps:这么看感觉好多东西都不是我自己写的似得
