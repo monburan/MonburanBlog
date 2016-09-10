@@ -59,19 +59,13 @@
         {% endfor %}
             <footer class="page">
                     {% if blogs.has_previous %}
-                          <span>
-                        <a href="?page={{ blogs.previous_page_number }}">上一页</a>
-                        </span>
+                        <span><a href="?page={{ blogs.previous_page_number }}"><i class="fa fa-angle-double-left fa-1g" aria-hidden="true"></i></a></span>
                     {% endif %}
                     {% for page_number in blogs.paginator.page_range %}
-                    	<span>
-                	        <a href="?page={{ page_number }}">{{ page_number }}</a>
-                        </span>
+                    	<span class="number"><a href="?page={{ page_number }}">{{ page_number }}</a></span>
                     {% endfor %}
                     {% if blogs.has_next %}
-                         <span>
-                        <a href="?page={{ blogs.next_page_number }}">下一页</a>
-                        </span>
+                        <span><a href="?page={{ blogs.next_page_number }}"><i class="fa fa-angle-double-right fa-1g" aria-hidden="true"></i></a></span>
                     {% endif %}
             </footer>
     {% endblock %}

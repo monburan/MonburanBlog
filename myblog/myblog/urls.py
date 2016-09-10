@@ -18,8 +18,11 @@ urlpatterns = [
     url(r'^categorys','blog.views.categorys',name='all_categorys'),#显示所有category
     url(r'^category/(\d+)/$','blog.views.get_category_id',name='blog_get_category'),#根据id显示category
     url(r'^tag/(\d+)/$','blog.views.get_tag_id',name='blog_get_tag'),#根据id显示tag
-	#url(r'^error','blog.views.error')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+#error for 404 or more
+handler404 = 'blog.views.error404'
+handler500 = 'blog.views.error500'
 #urlpatterns += staticfiles_urlpatterns

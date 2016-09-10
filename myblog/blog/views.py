@@ -3,8 +3,21 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.shortcuts import render,render_to_response
 from blog.models import Blog,Aboutme,Friends,Category,Tag
 from django.http import Http404
+from django.views.defaults import page_not_found,server_error
 from collections import OrderedDict
 import json
+
+#make response error
+
+def error404(request):
+	#if programe touch Object.DoesNotExist
+	#it will return a 404 Httpresponse like -> Http404
+	#then error404 will run and return a 404 page 
+	return page_not_found(request,template_name='404.html')
+
+def error500(request):
+	#same like error404
+	return server_error(request,template_name='500.html')
 
 def pagination(request,limit,blog_list):
     
@@ -22,10 +35,11 @@ def get_all_blogs(request):
 	limit = 3
 	blog_list = Blog.objects.all().order_by('-created')
 	blogs = pagination(request,limit,blog_list)
+	page = request.GET.get('page')
 	ctx = {
 		'title_type':'index',
 		'blogs':blogs,
-		'limit':limit,
+		'page':page,
 	}
 	return render_to_response('index.html',ctx)
 
@@ -57,13 +71,12 @@ def get_category_id(request,c_id):
     try:    
         blogs = pagination(request,limit,blog_list)
     except blog_list.count() == 0:
-        raise Http404
+		raise Http404
     else:
         ctx = {
             'title_type':'category',
             'title_name':Category.objects.get(id=c_id),
             'blogs':blogs,
-            'limit':limit,
         }
         return render_to_response('index.html',ctx)
         
@@ -89,7 +102,6 @@ def get_tag_id(request,t_id):
             'title_type':'tag',
             'title_name':Tag.objects.get(id=t_id),
             'blogs':blogs,
-            'limit':limit,
         }
         return render_to_response('index.html',ctx)
 
@@ -97,8 +109,8 @@ def about_me(request):
 	try:    
 		data = Aboutme.objects.get(id=1)
 	except Aboutme.DoesNotExist:
+		#if admin didn't write a aboutme page this programe will return a 404 page
 		raise Http404
-#		return rander_to_response('error404.html')
 	else:
 		return render_to_response('aboutme.html',{'aboutme':data})
 
@@ -107,12 +119,5 @@ def friends(request):
 		data = Friends.objects.get(id=1)
 	except Friends.DoesNotExist:
 		raise Http404
-#		return rander_to_response('error404.html')
 	else:
 		return render_to_response('friends.html',{'friends':data})
-
-#def error(request,error):
-#	if error == 404:
-#		return rander_to_response('error404.html')
-
-# Create your views here.

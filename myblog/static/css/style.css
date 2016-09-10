@@ -5,9 +5,9 @@ padding:0;
 font-family: Arial,Helvetica,"Microsoft Yahei",Monaco,Menlo,Consolas,"Courier New",monospace;;
 }
 h1, h2, h3, h4, h5 ,h6 .h1 .h2 .h3 .h4 .h5 .h6{
-font-weight:normal;
-line-height: 1.1;
+line-height: 1.2;
 color: inherit;
+font-weight:normal;
 }
 fullscreen,body,html {
 height:100%;
@@ -45,7 +45,7 @@ height: 100%;
 background:black;
 }
 .fullscreen .header .header_less{
-margin:1.5pc auto 1.5pc ;
+margin:2pc auto;
 text-align:center;
 width:80%;
 height:100%;
@@ -165,4 +165,18 @@ color: #999;
 }
 article header .info .category i, article header .info .tag i, article header .info .author i, article header .info .created i{
 padding-right:5px;
+}
+.error{
+padding:2pc auto;
+text-align: center;
+}
+.errorcode, .errorinfo{
+padding:2pc;
+font-size:300%;
+text-shadow: 2px 2px 3px rgba(50, 50, 50, 0.3);
+}
+.page .number{
+font-size:100%;
+text-align:center;
+padding: 0px 4px;
 }
