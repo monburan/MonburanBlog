@@ -120,6 +120,10 @@ article .blog header .title{
 text-shadow: 2px 2px 3px rgba(50, 50, 50, 0.3);
 font-size: 120%;
 }
+article .blog header .title h1{
+margin:0;
+padding:0;
+}
 article .summary {
 margin-top:15px;
 line-height: 1.6;
@@ -129,7 +133,7 @@ width: 95%;
 article .blog .summary{
 width: 95%;
 }
-article .summary p, hr{
+article .summary p{
 line-height: 2.0;
 word-wrap: break-word;
 }
