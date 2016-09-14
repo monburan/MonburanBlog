@@ -12,17 +12,20 @@ MonburanBlog
 
 ##功能
 
-富文本编辑，代码高亮，文章发布，标签分类，多说评论，后台管理
+富文本编辑，代码高亮，文章发布，标签分类(标签云)，多说评论，后台管理
 
 ##说明
 基于<b>django</b>框架<br />
 
-后台采用<b>django-admin-bootstrap</b>美化<br />
+后台采用<b>django-admin-bootstrap</b>美化<br />(可能在未来版本中取消)
 后台编辑器采用<b>ckeditor</b>符文本编辑器<br />
-评论系统采用多说<br />
+评论系统采用<b>多说</b><br />
 代码高亮采用<b>highlight</b>，配色采用<b>solarized-dark</b><br/>
-标签云采用<b>jqcloud</b><br />
+标签云采用修改过<b>jqcloud</b><br />
 图标采用<b>Font Awesome</b><br />
-使用uwsgi+nginx+mysql部署<br />
+推荐使用uwsgi+nginx+mysql部署<br />
 
 ps:这么看感觉好多东西都不是我自己写的似得
+
+#更新
+ver20160914：后台功能修改，添加批量设置文章为草稿或者发布状态。处理了部分问题页面。修改了部分界面样式处理了部分问题页面。修改了部分界面样式。(个人认为这个可以作为正式第一版了)
