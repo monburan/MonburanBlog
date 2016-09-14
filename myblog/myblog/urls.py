@@ -11,7 +11,7 @@ urlpatterns = [
     # url(r'^$', 'myblog.views.home', name='home'),
     url(r'^detail/(\d+)/$','blog.views.get_detail_id',name='blog_get_detail'),#具体文章详情页
     url(r'^^$','blog.views.get_all_blogs',name='blog_get_blogs'),#主页，显示文章
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^monburan/', include(admin.site.urls)),
     url(r'^aboutme','blog.views.about_me',name='about_me'),#关于
     url(r'^friends','blog.views.friends',name='friends'),#好友
     url(r'^tags','blog.views.tags',name='tags'),#显示所有tag
