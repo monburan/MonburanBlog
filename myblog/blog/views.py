@@ -33,7 +33,8 @@ def pagination(request,limit,blog_list):
 def get_all_blogs(request):
     
 	limit = 3
-	blog_list = Blog.objects.all().order_by('-created')
+	blog_list = Blog.objects.filter(status="p")[::-1]
+	#select all blogs which status is published,order by created time
 	blogs = pagination(request,limit,blog_list)
 	page = request.GET.get('page')
 	ctx = {
