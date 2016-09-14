@@ -114,11 +114,6 @@ margin-right:5%;
 }
 article header .title a{
 text-shadow: 2px 2px 3px rgba(50, 50, 50, 0.3);
-font-size: 110%
-}
-article .blog header .title{
-text-shadow: 2px 2px 3px rgba(50, 50, 50, 0.3);
-font-size: 120%;
 }
 article .blog header .title h1{
 margin:0;
@@ -140,15 +135,15 @@ word-wrap: break-word;
 article footer ,article header .info{
 font-size: 0.9em;
 line-height: 16px;
-padding-top: 10px;
+/*padding-top: 10px;*/
 position: relative;
 }
 article footer {
 border-top: 1px solid #ddd;
-margin-top: 15px;
+padding-top: 15px;
 }
 article header .info{
-margin-bottom: 15px;
+margin: 15px auto;
 }
 article header .info .category ,article header .info .tag,article header .info .author,article header .info .created {
 padding-left: 10px;

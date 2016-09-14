@@ -45,6 +45,7 @@ def get_all_blogs(request):
 	return render_to_response('index.html',ctx)
 
 def get_detail_id(request,blog_id):
+
     try:
         blog = Blog.objects.get(id=blog_id)
     except Blog.DoesNotExist:
@@ -108,8 +109,8 @@ def get_tag_id(request,t_id):
 
 def about_me(request):
 	try:    
-		data = Aboutme.objects.get(id=1)
-	except Aboutme.DoesNotExist:
+		data = Aboutme.objects.all()[:1][0]
+	except IndexError:
 		#if admin didn't write a aboutme page this programe will return a 404 page
 		raise Http404
 	else:
@@ -117,8 +118,8 @@ def about_me(request):
 
 def friends(request):
 	try: 
-		data = Friends.objects.get(id=1)
-	except Friends.DoesNotExist:
+		data = Friends.objects.all()[:1][0]
+	except IndexError:
 		raise Http404
 	else:
 		return render_to_response('friends.html',{'friends':data})
