@@ -2,7 +2,6 @@
 from django.contrib import admin
 from blog import models
 
-
 class AdminBlogShow(admin.ModelAdmin):
     list_display = ("title","author","summary","created","status")
     ordering = ['title']
@@ -10,7 +9,11 @@ class AdminBlogShow(admin.ModelAdmin):
         rows_updated = queryset.update(status='p')
         self.message_user(request,"已将%s条博客成功发布" % rows_updated)
     make_published.short_description = "将状态更新状态为已发布"
-    actions = [make_published]
+    def make_writing(self,request,queryset):
+        rows_updated = queryset.update(status='w')
+        self.message_user(request,"已将%s条博客设为草稿" % rows_updated)
+    make_writing.short_description = "将状态更新为草稿"
+    actions = [make_published,make_writing]
 #    fieldsets = [
 #        ('标题',{'fields':['title']}),
 #        ('作者',{'fields':['author']}),
