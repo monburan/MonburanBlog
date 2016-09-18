@@ -1,10 +1,13 @@
 #coding:utf-8
 from django.contrib import admin
+from django.core.urlresolvers import reverse
+from django.utils.html import format_html
 from blog import models
 
 class AdminBlogShow(admin.ModelAdmin):
 
-    list_per_page = 4
+    view_on_site = False
+    list_per_page = 5
     list_display = ("title","author","summary","created","status")
     ordering = ['title']
 
@@ -20,14 +23,19 @@ class AdminBlogShow(admin.ModelAdmin):
         self.message_user(request,"已将%s条博客设为草稿" % rows_updated)
     make_writing.short_description = "将状态更新为草稿"
 
+    #根据创建时间和状态过滤分类
+    list_filter = ["created","status"]
+    #将状态修改功能添加到后台操作上
     actions = [make_published,make_writing]
+    #添加搜索功能：搜索标题摘要和正文
+    search_fields = ["title","summary","content"]
 
 class AdminCategoryShow(admin.ModelAdmin):
-
+	
     list_display = ('name',)
 
 class AdminTagShow(admin.ModelAdmin):
-
+	
     list_display = ('name',)
     
 class AdminAboutMe(admin.ModelAdmin):
