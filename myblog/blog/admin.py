@@ -1,12 +1,11 @@
 #coding:utf-8
 from django.contrib import admin
-from django.core.urlresolvers import reverse
-from django.utils.html import format_html
+#from django.core.urlresolvers import reverse
+#from django.utils.html import format_html
 from blog import models
 
 class AdminBlogShow(admin.ModelAdmin):
 
-    view_on_site = False
     list_per_page = 5
     list_display = ("title","author","summary","created","status")
     ordering = ['title']
@@ -31,13 +30,19 @@ class AdminBlogShow(admin.ModelAdmin):
     search_fields = ["title","summary","content"]
 
 class AdminCategoryShow(admin.ModelAdmin):
+
+    def published_count(self,obj):
+        return obj.published_count()
 	
-    list_display = ('name',)
+    list_display = ('name','published_count')
 
 class AdminTagShow(admin.ModelAdmin):
 	
-    list_display = ('name',)
-    
+    def published_count(self,obj):
+        return obj.published_count()
+
+    list_display = ('name','published_count')
+
 class AdminAboutMe(admin.ModelAdmin):
 
     list_display = ('title',)

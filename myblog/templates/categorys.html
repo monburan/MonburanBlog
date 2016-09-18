@@ -17,11 +17,10 @@
         }
         function getdatas(){
             var word_cloud=new Array();
-            var j=1
             {% for category in categorys %}
                 word_cloud.push(
                 new word('{{ category.name }}',
-                {{category.blog_set.all.count}},
+                {{category.published_count}},
                 "{% url 'blog_get_category' category.id %}"));
             {% endfor %}
             return word_cloud

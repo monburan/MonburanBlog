@@ -1,4 +1,4 @@
-# coding=utf8
+#coding=utf8
 from django.db import models
 from django.contrib import admin
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -16,6 +16,9 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+    def published_count(self):
+        return self.blog_set.filter(status="p").count()
+
     class Meta:
         verbose_name = '分类'
         verbose_name_plural = '分类'
@@ -26,7 +29,10 @@ class Tag(models.Model):
 
     def __unicode__(self):
         return self.name
-    
+
+    def published_count(self):
+        return self.blog_set.filter(status="p").count()
+
     class Meta:
         verbose_name = '标签'
         verbose_name_plural = '标签'

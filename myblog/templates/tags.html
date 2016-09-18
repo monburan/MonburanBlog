@@ -21,7 +21,7 @@
             {% for tag in tags %}
                 word_cloud.push(
                 new word('{{ tag.name }}',
-                {{tag.blog_set.all.count}},
+                {{tag.published_count}},
                 "{% url 'blog_get_tag' tag.id %}"));
                 console.log(word_cloud)
             {% endfor %}

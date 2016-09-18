@@ -5,19 +5,18 @@ from blog.models import Blog,Aboutme,Friends,Category,Tag
 from django.http import Http404
 from django.views.defaults import page_not_found,server_error
 from collections import OrderedDict
-import json
 
 #make response error
 
 def error404(request):
-	#if programe touch Object.DoesNotExist
-	#it will return a 404 Httpresponse like -> Http404
-	#then error404 will run and return a 404 page 
-	return page_not_found(request,template_name='404.html')
+    #if programe touch Object.DoesNotExist
+    #it will return a 404 Httpresponse like -> Http404
+    #then error404 will run and return a 404 page 
+    return page_not_found(request,template_name='404.html')
 
 def error500(request):
-	#same like error404
-	return server_error(request,template_name='500.html')
+    #same like error404
+    return server_error(request,template_name='500.html')
 
 def pagination(request,limit,blog_list):
     
@@ -32,17 +31,17 @@ def pagination(request,limit,blog_list):
         return paginator.page(paginator.num_pages)
 def get_all_blogs(request):
     
-	limit = 3
-	blog_list = Blog.objects.filter(status="p")[::-1]
-	#select all blogs which status is published,order by created time
-	blogs = pagination(request,limit,blog_list)
-	page = request.GET.get('page')
-	ctx = {
-		'title_type':'index',
-		'blogs':blogs,
-		'page':page,
-	}
-	return render_to_response('index.html',ctx)
+    limit = 3
+    blog_list = Blog.objects.filter(status="p")[::-1]
+    #select all blogs which status is published,order by created time
+    blogs = pagination(request,limit,blog_list)
+    page = request.GET.get('page')
+    ctx = {
+        'title_type':'index',
+        'blogs':blogs,
+        'page':page,
+    }
+    return render_to_response('index.html',ctx)
 
 def get_detail_id(request,blog_id):
 
@@ -57,8 +56,6 @@ def get_detail_id(request,blog_id):
     return render(request,'details.html',ctx)
 
 def categorys(request):#显示所有分类的名称和文章总数
-    id = 0
-    datas = OrderedDict()
     categorys = Category.objects.all()
     count = categorys.count()
     ctx = {
@@ -69,11 +66,11 @@ def categorys(request):#显示所有分类的名称和文章总数
 def get_category_id(request,c_id):
     
     limit = 3
-    blog_list = Blog.objects.filter(category_id=c_id)
+    blog_list = Blog.objects.filter(category_id=c_id,status="p")
     try:    
         blogs = pagination(request,limit,blog_list)
     except blog_list.count() == 0:
-		raise Http404
+        raise Http404
     else:
         ctx = {
             'title_type':'category',
@@ -93,7 +90,7 @@ def tags(request):#显示所有标签的名称和文章总数
 def get_tag_id(request,t_id):
 
     limit = 3
-    blog_list = Blog.objects.filter(tag=t_id)
+    blog_list = Blog.objects.filter(tag=t_id,status="p")
 
     try:    
         blogs = pagination(request,limit,blog_list)
@@ -108,18 +105,18 @@ def get_tag_id(request,t_id):
         return render_to_response('index.html',ctx)
 
 def about_me(request):
-	try:    
-		data = Aboutme.objects.all()[:1][0]
-	except IndexError:
-		#if admin didn't write a aboutme page this programe will return a 404 page
-		raise Http404
-	else:
-		return render_to_response('aboutme.html',{'aboutme':data})
+    try:    
+        data = Aboutme.objects.all()[:1][0]
+    except IndexError:
+        #if admin didn't write a aboutme page this programe will return a 404 page
+        raise Http404
+    else:
+        return render_to_response('aboutme.html',{'aboutme':data})
 
 def friends(request):
-	try: 
-		data = Friends.objects.all()[:1][0]
-	except IndexError:
-		raise Http404
-	else:
-		return render_to_response('friends.html',{'friends':data})
+    try: 
+        data = Friends.objects.all()[:1][0]
+    except IndexError:
+        raise Http404
+    else:
+        return render_to_response('friends.html',{'friends':data})
