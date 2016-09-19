@@ -1,7 +1,5 @@
 #coding:utf-8
 from django.contrib import admin
-#from django.core.urlresolvers import reverse
-#from django.utils.html import format_html
 from blog import models
 
 class AdminBlogShow(admin.ModelAdmin):

@@ -6,7 +6,6 @@ from django.http import Http404
 from django.views.defaults import page_not_found,server_error
 from collections import OrderedDict
 
-#make response error
 
 def error404(request):
     #if programe touch Object.DoesNotExist
@@ -33,7 +32,6 @@ def get_all_blogs(request):
     
     limit = 5
     blog_list = Blog.objects.filter(status="p")[::-1]
-    #select all blogs which status is published,order by created time
     blogs = pagination(request,limit,blog_list)
     page = request.GET.get('page')
     ctx = {
@@ -56,8 +54,8 @@ def get_detail_id(request,blog_id):
     return render(request,'details.html',ctx)
 
 def categorys(request):#显示所有分类的名称和文章总数
+
     categorys = Category.objects.all()
-    count = categorys.count()
     ctx = {
         'categorys':categorys,
     }
@@ -105,6 +103,7 @@ def get_tag_id(request,t_id):
         return render_to_response('index.html',ctx)
 
 def about_me(request):
+
     try:    
         data = Aboutme.objects.all()[:1][0]
     except IndexError:
@@ -114,6 +113,7 @@ def about_me(request):
         return render_to_response('aboutme.html',{'aboutme':data})
 
 def friends(request):
+
     try: 
         data = Friends.objects.all()[:1][0]
     except IndexError:
