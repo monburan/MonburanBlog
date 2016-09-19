@@ -35,7 +35,7 @@
                     <span class="tag" >
                     {% if blog.tag.all.count == 1 %}
                         <i class="fa fa-tag fa-1g"></i>
-                        {% for tag in blog.tag.all    %}
+                        {% for tag in blog.tag.all %}
                         <a href="{% url 'blog_get_tag' tag.id %}">{{ tag }}</a>
                         {% endfor %}
                     {% elif blog.tag.all.count > 1 %}
@@ -62,9 +62,7 @@
                         <span><a href="?page={{ blogs.previous_page_number }}"><i class="fa fa-angle-double-left fa-1g" aria-hidden="true"></i></a></span>
                     {% endif %}
                     {% for page_number in blogs.paginator.page_range %}
-						{% if page_number != 1 %}
                     	<span class="number"><a href="?page={{ page_number }}">{{ page_number }}</a></span>
-						{% endif %}
                     {% endfor %}
                     {% if blogs.has_next %}
                         <span><a href="?page={{ blogs.next_page_number }}"><i class="fa fa-angle-double-right fa-1g" aria-hidden="true"></i></a></span>

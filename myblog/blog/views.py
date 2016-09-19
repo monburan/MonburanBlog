@@ -31,7 +31,7 @@ def pagination(request,limit,blog_list):
         return paginator.page(paginator.num_pages)
 def get_all_blogs(request):
     
-    limit = 3
+    limit = 5
     blog_list = Blog.objects.filter(status="p")[::-1]
     #select all blogs which status is published,order by created time
     blogs = pagination(request,limit,blog_list)

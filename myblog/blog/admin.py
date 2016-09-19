@@ -8,7 +8,7 @@ class AdminBlogShow(admin.ModelAdmin):
 
     list_per_page = 5
     list_display = ("title","author","summary","created","status")
-    ordering = ['title']
+    ordering = ['created']
 
     #修改为发布状态
     def make_published(self,request,queryset):
